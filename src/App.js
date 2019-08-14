@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring'
 
 import Checkout from './components/Checkout'
+import Modal from './components/Modal'
 import Nav from './components/Nav'
 import Routes from './components/Routes'
 
@@ -11,6 +12,7 @@ import './App.css';
 function App() {
   const [isNavOpen, setNavOpen] = useState(false)
   const [isCheckotOpen, setCheckoutOpen] = useState(false)
+  const [isModalOpen, setNavModal] = useState(false)
 
   const navAnimation = useSpring({
     transform: isNavOpen
@@ -32,31 +34,40 @@ function App() {
   }
 
   const handleCheckoutOpen = () => {
-    console.log(isCheckotOpen)
     setCheckoutOpen(!isCheckotOpen)
   }
 
+  const handleToggleModal = () => {
+    setNavModal(!isModalOpen)
+  }
+
   return (
-    <animated.div className="App" style={fade}>
-      <header className="App-header">
-        <img src={logo} className="logo" alt='App logo' />
+    <animated.div className='App' style={fade}>
+      <header className='App-header'>
+        <img src={logo} className='logo' alt='App logo' />
         <div className='Nav-buttons '>
           <button
-            className="menu-button"
+            className='menu-button'
             onClick={handleTogleNav}>
             Menu
           </button>
           <button
-            className="menu-button"
+            className='menu-button'
             onClick={handleCheckoutOpen}>
             Checkout
-        </button>
+          </button>
+          <button
+            className='menu-button'
+            onClick={handleToggleModal}>
+            Modal
+          </button>
         </div>
         <Nav style={navAnimation} />
       </header>
       <main>
         <Checkout isCheckotOpen={isCheckotOpen} />
         <Routes />
+        <Modal on={isModalOpen} toggle={handleToggleModal}/>
       </main>
     </animated.div>
   );
