@@ -6,6 +6,7 @@ import Checkout from './components/Checkout'
 import Modal from './components/Modal'
 import Nav from './components/Nav'
 import Routes from './components/Routes'
+import Waypoints from './components/Waypoints'
 
 import logo from './logo.svg';
 import './App.css';
@@ -67,6 +68,7 @@ function App() {
       </header>
       <main>
         <Accordion />
+        <Waypoints />
         <Checkout isCheckotOpen={isCheckotOpen} />
         <Routes />
         <Modal on={isModalOpen} toggle={handleToggleModal}/>
