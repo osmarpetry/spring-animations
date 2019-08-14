@@ -90,6 +90,7 @@ h1 {
   top: 0;
   bottom: 0;
   display: flex;
+  z-index: 10;
 }
 .checkout-left {
   width: 30%;
