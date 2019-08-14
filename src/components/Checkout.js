@@ -1,9 +1,10 @@
 import React from 'react'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated, config } from 'react-spring'
 
 const Checkout = ({ isCheckotOpen }) => {
     const { x } = useSpring({
-        x: isCheckotOpen ? 0 : 100
+        x: isCheckotOpen ? 0 : 100,
+        config: config.wobbly
     })
 
     return (
