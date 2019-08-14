@@ -35,6 +35,11 @@ body {
   padding: 0 5%;
 }
 
+.Nav-buttons {
+  justify-content: flex-end;
+  z-index: 15;
+}
+
 .App-link {
   color: var(--teal);
 }

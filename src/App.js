@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring'
 
+import Checkout from './components/Checkout'
 import Nav from './components/Nav'
 import Toggle from './components/Toggle'
 
@@ -9,6 +10,7 @@ import './App.css';
 
 function App() {
   const [isNavOpen, setNavOpen] = useState(false)
+  const [isCheckotOpen, setCheckoutOpen] = useState(false)
 
   const navAnimation = useSpring({
     transform: isNavOpen
@@ -29,18 +31,31 @@ function App() {
     setNavOpen(!isNavOpen)
   }
 
+  const handleCheckoutOpen = () => {
+    console.log(isCheckotOpen)
+    setCheckoutOpen(!isCheckotOpen)
+  }
+
   return (
     <animated.div className="App" style={fade}>
       <header className="App-header">
         <img src={logo} className="logo" alt='App logo' />
-        <button
-          className="menu-button"
-          onClick={handleTogleNav}>
-          Menu
+        <div className='Nav-buttons '>
+          <button
+            className="menu-button"
+            onClick={handleTogleNav}>
+            Menu
+          </button>
+          <button
+            className="menu-button"
+            onClick={handleCheckoutOpen}>
+            Checkout
         </button>
+        </div>
         <Nav style={navAnimation} />
       </header>
       <main>
+        <Checkout isCheckotOpen={isCheckotOpen} />
         <Toggle />
       </main>
     </animated.div>
