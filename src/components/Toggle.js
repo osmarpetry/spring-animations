@@ -1,39 +1,54 @@
 import React, { useState } from 'react'
 import { useTransition, animated } from 'react-spring'
 
-const AnimatedTigle = animated.h1
-
 const Toggle = () => {
-    const [isToggled, setToggle] = useState(false)
-    const transition = useTransition(isToggled, null, {
-        from: {
-            fontSize: '5rem',
-            color: 'blue',
-            y: 0
+    const [items, setItems] = useState([
+        {
+            letter: 'O',
+            key: 1
         },
-        enter: {
-            fontSize: '2em',
-            color: 'pink',
-            y: -50
+        {
+            letter: 'S',
+            key: 2
         },
-        leave: {
-            fontSize: '5rem',
-            color: 'blue',
-            y: 0
+        {
+            letter: 'M',
+            key: 3
         },
-    })
+        {
+            letter: 'A',
+            key: 4
+        },
+        {
+            letter: 'R',
+            key: 5
+        }
+    ])
+
+    const transition = useTransition(items, item => item.key, {
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 }
+      })
 
     return (
         <div>
             {transition.map(
-                ({ item, key, props }) =>
-                    item && (
-                        <AnimatedTigle key={key} stlye={props}>
-                            Hello
-                        </AnimatedTigle>
-                    )
+                ({ item, key, props }) => (
+                    <animated.h1 style={props} key={key}>
+                        {item.letter}
+                    </animated.h1>
+                )
             )}
-            <button onClick={() => setToggle(!isToggled)}>Toggle</button>
+            <button
+                onClick={() => setItems([
+                    {
+                        letter: 'O',
+                        key: 1
+                    }
+                ])}>
+                Toggle
+            </button>
         </div >
     )
 }
