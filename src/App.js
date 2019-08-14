@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring'
 
 import Checkout from './components/Checkout'
 import Nav from './components/Nav'
-import Toggle from './components/Toggle'
+import Routes from './components/Routes'
 
 import logo from './logo.svg';
 import './App.css';
@@ -56,7 +56,7 @@ function App() {
       </header>
       <main>
         <Checkout isCheckotOpen={isCheckotOpen} />
-        <Toggle />
+        <Routes />
       </main>
     </animated.div>
   );
