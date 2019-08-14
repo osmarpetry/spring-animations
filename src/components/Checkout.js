@@ -1,17 +1,28 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 
-const Checkout = ({isCheckotOpen}) => {
-    const animation = useSpring({
-        transform: isCheckotOpen
-            ? 'translate3d(0, 0, 0)'
-            : 'translate3d(100%, 0, 0)'
+const Checkout = ({ isCheckotOpen }) => {
+    const { x } = useSpring({
+        x: isCheckotOpen ? 0 : 100
     })
 
     return (
-        <div className='checkout'>
-            <animated.div className='checkout-left' style={animation} />
-            <animated.div className='checkout-right' style={animation} />
+        <div
+            className='checkout'
+            style={{
+                pointerEvents: isCheckotOpen ? 'all' : 'none'
+            }}>
+            <animated.div
+                className='checkout-left'
+                style={{
+                    transform: x.interpolate(x => `translate3d(${x * -1}%, 0, 0)`)
+                }}
+            />
+            <animated.div
+                className='checkout-right'
+                style={{
+                    transform: x.interpolate(x => `translate3d(${x}%, 0, 0)`)
+                }} />
         </div>
     )
 }
