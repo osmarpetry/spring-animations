@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring'
 
+import Toggle from './components/Toggle'
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -20,6 +22,9 @@ function App() {
         <img src={logo} className="logo" alt='App logo' />
         <button className="menu-button">Menu</button>
       </header>
+      <main>
+        <Toggle />
+      </main>
     </animated.div>
   );
 }
