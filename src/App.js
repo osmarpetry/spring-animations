@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring'
 
+import Accordion from './components/Accordion'
 import Checkout from './components/Checkout'
 import Modal from './components/Modal'
 import Nav from './components/Nav'
@@ -65,6 +66,7 @@ function App() {
         <Nav style={navAnimation} />
       </header>
       <main>
+        <Accordion />
         <Checkout isCheckotOpen={isCheckotOpen} />
         <Routes />
         <Modal on={isModalOpen} toggle={handleToggleModal}/>
