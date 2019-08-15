@@ -6,6 +6,7 @@ import Checkout from './components/Checkout'
 import Gesture from './components/Gesture'
 import Modal from './components/Modal'
 import Nav from './components/Nav'
+import UseSpringsBoxes from './components/UseSpringsBoxes'
 import Routes from './components/Routes'
 import Waypoints from './components/Waypoints'
 
@@ -70,6 +71,7 @@ function App() {
       <main>
         <Accordion />
         <Gesture />
+        <UseSpringsBoxes />
         <Waypoints />
         <Checkout isCheckotOpen={isCheckotOpen} />
         <Routes />
