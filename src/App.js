@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring'
 
 import Accordion from './components/Accordion'
 import Checkout from './components/Checkout'
+import Gesture from './components/Gesture'
 import Modal from './components/Modal'
 import Nav from './components/Nav'
 import Routes from './components/Routes'
@@ -68,6 +69,7 @@ function App() {
       </header>
       <main>
         <Accordion />
+        <Gesture />
         <Waypoints />
         <Checkout isCheckotOpen={isCheckotOpen} />
         <Routes />
