@@ -1,12 +1,27 @@
-import { useRef, useState, useEffect } from 'react';
-import ResizeObserver from 'resize-observer-polyfill';
+import { useLayoutEffect, useRef, useState } from "react";
 
 export default function useMeasure() {
-    const ref = useRef();
-    const [bounds, set] = useState({ left: 0, top: 0, width: 0, height: 0 });
-    const [ro] = useState(
-        () => new ResizeObserver(([entry]) => set(entry.contentRect))
-    );
-    useEffect(() => (ro.observe(ref.current), ro.disconnect), []);
-    return [{ ref }, bounds];
+  const ref = useRef(null);
+  const [bounds, setBounds] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
+
+  useLayoutEffect(() => {
+    if (!ref.current || typeof ResizeObserver === "undefined") return;
+
+    const observer = new ResizeObserver(([entry]) => {
+      setBounds(entry.contentRect);
+    });
+
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []); // no external 'ro' referenced, so empty deps is correct
+
+  return [ref, bounds];
 }
