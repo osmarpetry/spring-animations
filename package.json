@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "16.14.0",
     "react-dom": "16.13.0",
-    "react-router-dom": "5.0.1",
+    "react-router-dom": "6.30.6",
     "react-scripts": "5.0.1",
     "react-spring": "8.0.27",
     "react-waypoint": "10.3.0",
