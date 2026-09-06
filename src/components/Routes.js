@@ -1,16 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes as RouterRoutes,
   Route,
   Link,
-  __RouterContext
+  useLocation
 } from 'react-router-dom'
 import { animated, useTransition } from 'react-spring'
-
-function useRouter() {
-  return useContext(__RouterContext)
-}
 
 const Routes = () => {
   return (
@@ -26,7 +22,7 @@ const Routes = () => {
 }
 
 const Main = () => {
-  const { location } = useRouter()
+  const location = useLocation()
 
   const transitions = useTransition(location, location => location.key, {
     from: {
@@ -40,11 +36,11 @@ const Main = () => {
 
   return transitions.map(({ item, props: transition, key }) => (
     <animated.div key={key} style={transition}>
-      <Switch location={item}>
-        <Route exact path="/" component={One} />
-        <Route exact path="/two" component={Two} />
-        <Route exact path="/three" component={Three} />
-      </Switch>
+      <RouterRoutes location={item}>
+        <Route path="/" element={<One />} />
+        <Route path="/two" element={<Two />} />
+        <Route path="/three" element={<Three />} />
+      </RouterRoutes>
     </animated.div>
   ))
 }
